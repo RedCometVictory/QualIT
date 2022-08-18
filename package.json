@@ -13,10 +13,9 @@
   },
   "author": "Jor-EL Sanchez",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "bcryptjs": "^2.4.3",
-    "concurrently": "^7.2.2",
+    "concurrently": "^7.3.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
@@ -26,5 +25,6 @@
     "nodemon": "^2.0.19",
     "pg": "^8.7.3",
     "uuid": "^8.3.2"
-  }
+  },
+  "devDependencies": {}
 }
