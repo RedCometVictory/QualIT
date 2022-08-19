@@ -50,6 +50,14 @@ body {
   // @include flex(row, center, center);
 }
 
+.routes {
+  &__container {
+    height: 100%;
+    width: 100%;
+    @include flex(column, flex-start, center);
+  }
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

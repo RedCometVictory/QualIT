@@ -4,7 +4,7 @@ import Spinner from '../UI/Spinner';
 
 // protect routes only admin or manager could access
 
-const SecureRoutes = () => {
+const SecurePageRoutes = () => {
 // const SecureRoutes = ({ component: Component, ...rest}) => {
   // const userAuth = useSelector(state => state.auth);
   // const { isAuthenticated, userInfo, loading } = userAuth;
@@ -15,4 +15,4 @@ const SecureRoutes = () => {
     <div className="">Admin</div>
   )
 };
-export default SecureRoutes;
+export default SecurePageRoutes;

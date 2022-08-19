@@ -9,7 +9,6 @@ const ModeButton = () => {
 
   const toggleTheme = (value) => {
     dispatch(globalTheme(value));
-    // localStorage.setItem('theme', value);
   };
 
   return (

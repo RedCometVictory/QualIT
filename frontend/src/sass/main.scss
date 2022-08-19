@@ -7,11 +7,13 @@
 
 // 3 - components
 @import './components/mainNav';
+@import './components/miniNav';
 
 // 4 - layouts
 
 // 5 - pages
 @import './pages/dashboard';
+@import './pages/board';
 
 // 6 - themes
 @import './themes/darkLight';

@@ -5,5 +5,5 @@ const CommentList = () => {
   return (
     <div>commentList</div>
   )
-}
+};
 export default CommentList;

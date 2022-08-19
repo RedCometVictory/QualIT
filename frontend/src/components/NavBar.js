@@ -75,7 +75,6 @@ const NavBar = () => {
 
   return (
     <header className="nav">
-      {/* <ModeButton theme={theme} setTheme={setTheme} /> */}
       <ModeButton />
       <nav className='nav__menu'>
         <Logo />

@@ -29,6 +29,7 @@ const Dashboard = () => {
               className="dash__unauth-btn"
               variant='outlined'
               onClick={registerHandler}
+              href="/tasks"
             >
               Sign Up
             </ButtonUI>
