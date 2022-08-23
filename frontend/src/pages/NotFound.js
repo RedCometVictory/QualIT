@@ -1,7 +1,10 @@
+import { useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 const NotFound = () => {
   const navigate = useNavigate();
-  navigate('/');
+  useEffect(() => {
+    navigate('/');
+  }, []);
   return null;
 };
 export default NotFound;

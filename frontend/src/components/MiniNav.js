@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import ButtonUI from "./UI/ButtonUI";
 
 const MiniNav = () => {
-   const [hasMounted, setHasMounted] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
   // TODO: pending on the params of the url, generate the appropriate buttons
   const { pathname } = useLocation();
   useEffect(() => {

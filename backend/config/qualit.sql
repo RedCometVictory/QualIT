@@ -10,6 +10,7 @@
 -- Created new images table in order to keep data independent of products table and order_items table. This way images can be updated or deleted independently via Admin and are also safe from deletion if the Admin decides to delete a product from the porduct table or if a customer deletes and order (and subsequent order_items)) containing such image. This way the image is preserved for other customers' order histories (in the best possible manner I can think of).
 
 -- can be skipped if db already created via heroku cli
+-- NOTE: this command may take a while to complete
 -- CREATE DATABASE blazr_gear;
 -- CREATE DATABASE blazr_gear_ver_02;
 
@@ -106,7 +107,7 @@ CREATE TABLE notifications(
   FOREIGN KEY(user_id) REFERENCES users(id),
   -- FOREIGN KEY(ticket_id) REFERENCES tickets(id),
   FOREIGN KEY(message_id) REFERENCES messages(id),
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE tickets(
@@ -162,11 +163,56 @@ CREATE TABLE histories(
 
 -- ALTER TABLE images DROP CONSTRAINT files_id_fkey;
 
-CREATE TABLE uploads (
+CREATE TABLE uploads(
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   file_url VARCHAR(320) NOT NULL,
   file_name VARCHAR(320) NOT NULL,
   message_id UUID,
   FOREIGN KEY (message_id) REFERENCES messages(id),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+-- --------------------------------------------------
+-- trello boards
+CREATE TABLE boards(
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name VARCHAR(320),
+  background_image VARCHAR(320),
+  -- array of users assigned to board,
+  -- may not utilize
+  users TEXT [],
+  -- created by refers to userId, who owns the board
+  user_id UUID,
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT NULL
+);
+
+CREATE TABLE columns(
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name VARCHAR(320),
+  sequence INTEGER,
+  -- use board id fkey to get board_name column belongs to,
+  board_id UUID,
+  user_id UUID,
+  FOREIGN KEY (board_id) REFERENCES boards(id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT NULL
+);
+
+CREATE TABLE cards(
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title VARCHAR(320),
+  description TEXT,
+  priority VARCHAR(100),
+  type VARCHAR(100),
+  sequence INTEGER,
+  board_id UUID,
+  column_id UUID,
+  user_id UUID,
+  FOREIGN KEY (board_id) REFERENCES boards(id),
+  FOREIGN KEY (column_id) REFERENCES columns(id),
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT NULL
 );
