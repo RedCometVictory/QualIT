@@ -8,7 +8,6 @@
   }
   &__lanes {
     @include flex(row, flex-start, center);
-    background-color: orangered;
     height: 100%; 
   }
   &__lane {

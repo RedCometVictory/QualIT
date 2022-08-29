@@ -7,7 +7,10 @@ const ButtonUI = ({
   disabled, children, ...restProps
 }) => {
   return href ? (
-    <Link to={href}>
+    <Link
+      to={href}
+      style={{ textDecoration: 'none' }}
+    >
       <Button
         className={className ? className : ' '}
         variant={variant ? variant : 'text'}

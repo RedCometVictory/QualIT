@@ -3,7 +3,12 @@ const globalTheme = async (newTheme) => {
   return newTheme;
 };
 
+const unsplashTheme = async (openDrawer) => {
+  return openDrawer;
+}
+
 const themeService = {
-  globalTheme
+  globalTheme,
+  unsplashTheme
 };
 export default themeService;
